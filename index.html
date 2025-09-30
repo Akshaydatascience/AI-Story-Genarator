@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Story Generator & Teaching Assistant</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <div class="logo">
+                <i class="fas fa-book-open"></i>
+                <h1>AI Story Generator</h1>
+            </div>
+            <p class="subtitle">Create engaging stories and learn through narrative</p>
+        </header>
+
+        <div class="mode-selector">
+            <button class="mode-btn active" data-mode="story">
+                <i class="fas fa-magic"></i>
+                Story Generator
+            </button>
+            <button class="mode-btn" data-mode="education">
+                <i class="fas fa-graduation-cap"></i>
+                Educational Mode
+            </button>
+        </div>
+
+        <!-- Story Generator Form -->
+        <div class="form-container" id="story-form">
+            <h2><i class="fas fa-magic"></i> Generate Your Story</h2>
+            <form id="storyGeneratorForm">
+                <div class="form-group">
+                    <label for="storyPrompt">Story Prompt *</label>
+                    <textarea id="storyPrompt" name="prompt" placeholder="Enter your story idea... (e.g., 'A dragon who loves baking', 'A detective solving a mystery')" required></textarea>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="storyGenre">Genre</label>
+                        <select id="storyGenre" name="genre">
+                            <option value="">Any Genre</option>
+                            <option value="fantasy">Fantasy</option>
+                            <option value="sci-fi">Science Fiction</option>
+                            <option value="mystery">Mystery</option>
+                            <option value="adventure">Adventure</option>
+                            <option value="comedy">Comedy</option>
+                            <option value="romance">Romance</option>
+                            <option value="horror">Horror</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="storyTone">Tone</label>
+                        <select id="storyTone" name="tone">
+                            <option value="friendly">Friendly</option>
+                            <option value="humorous">Humorous</option>
+                            <option value="serious">Serious</option>
+                            <option value="child-friendly">Child-friendly</option>
+                            <option value="academic">Academic</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="storyLength">Length</label>
+                        <select id="storyLength" name="length">
+                            <option value="short">Short (300-500 words)</option>
+                            <option value="medium">Medium (700-1000 words)</option>
+                            <option value="long">Long (1200-1800 words)</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="storyAudience">Target Audience</label>
+                        <input type="text" id="storyAudience" name="audience" placeholder="e.g., kids, teenagers, adults" value="general">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="storyPerspective">Perspective</label>
+                    <select id="storyPerspective" name="perspective">
+                        <option value="third-person">Third Person</option>
+                        <option value="first-person">First Person</option>
+                        <option value="dialogue">Dialogue-based</option>
+                    </select>
+                </div>
+
+                <button type="submit" class="generate-btn">
+                    <i class="fas fa-wand-magic-sparkles"></i>
+                    Generate Story
+                </button>
+            </form>
+        </div>
+
+        <!-- Educational Mode Form -->
+        <div class="form-container hidden" id="education-form">
+            <h2><i class="fas fa-graduation-cap"></i> Explain a Concept</h2>
+            <form id="educationForm">
+                <div class="form-group">
+                    <label for="concept">Concept to Explain *</label>
+                    <input type="text" id="concept" name="concept" placeholder="Enter a concept... (e.g., 'photosynthesis', 'gravity', 'democracy')" required>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="eduTone">Tone</label>
+                        <select id="eduTone" name="tone">
+                            <option value="friendly">Friendly</option>
+                            <option value="child-friendly">Child-friendly</option>
+                            <option value="humorous">Humorous</option>
+                            <option value="serious">Serious</option>
+                            <option value="academic">Academic</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="eduComplexity">Complexity</label>
+                        <select id="eduComplexity" name="complexity">
+                            <option value="simple">Simple</option>
+                            <option value="moderate">Moderate</option>
+                            <option value="advanced">Advanced</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="eduLength">Length</label>
+                        <select id="eduLength" name="length">
+                            <option value="short">Short (300-500 words)</option>
+                            <option value="medium">Medium (700-1000 words)</option>
+                            <option value="long">Long (1200-1800 words)</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="eduAudience">Target Audience</label>
+                        <input type="text" id="eduAudience" name="audience" placeholder="e.g., 10-year-old, college students" value="general">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="eduPerspective">Perspective</label>
+                    <select id="eduPerspective" name="perspective">
+                        <option value="third-person">Third Person</option>
+                        <option value="first-person">First Person</option>
+                        <option value="dialogue">Dialogue-based</option>
+                    </select>
+                </div>
+
+                <button type="submit" class="generate-btn">
+                    <i class="fas fa-lightbulb"></i>
+                    Explain Concept
+                </button>
+            </form>
+        </div>
+
+        <!-- Results Section -->
+        <div class="results-container hidden" id="results">
+            <div class="results-header">
+                <h3 id="resultsTitle">Generated Story</h3>
+                <button class="copy-btn" id="copyBtn">
+                    <i class="fas fa-copy"></i>
+                    Copy
+                </button>
+            </div>
+            <div class="results-content" id="resultsContent">
+                <!-- Generated content will appear here -->
+            </div>
+            <div class="results-actions">
+                <button class="action-btn" id="regenerateBtn">
+                    <i class="fas fa-redo"></i>
+                    Regenerate
+                </button>
+                <button class="action-btn" id="newStoryBtn">
+                    <i class="fas fa-plus"></i>
+                    New Story
+                </button>
+            </div>
+        </div>
+
+        <!-- Loading Spinner -->
+        <div class="loading hidden" id="loading">
+            <div class="spinner"></div>
+            <p>Generating your story...</p>
+        </div>
+
+        <!-- Error Message -->
+        <div class="error hidden" id="error">
+            <i class="fas fa-exclamation-triangle"></i>
+            <span id="errorMessage"></span>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
